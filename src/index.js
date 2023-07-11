@@ -4,32 +4,24 @@ import ReactDOM from "react-dom/client";
 import { restaurants } from "./constants/fixtures";
 
 import "./index.css";
+import { Menu } from "./components/Menu/Menu";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <div>
     {restaurants?.map((restaurant) => (
-      <div>
+      <div key={restaurant.id}>
         <h2>{restaurant.name}</h2>
 
-        {restaurant.menu.length > 0 && (
-          <div>
-            <h3>Menu</h3>
-            <ul>
-              {restaurant.menu.map((dish) => (
-                <li>{dish.name}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <Menu menu={restaurant.menu} />
 
         {restaurant.reviews.length > 0 && (
           <div>
             <h3>Reviews</h3>
             <ul>
               {restaurant.reviews.map((review) => (
-                <li>{review.text}</li>
+                <li key={review.id}>{review.text}</li>
               ))}
             </ul>
           </div>
