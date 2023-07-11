@@ -7,24 +7,35 @@ import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const restaurant = restaurants[0];
-
 root.render(
   <div>
-    <div>
-      <h2>{restaurant.name}</h2>
+    {restaurants?.map((restaurant) => (
+      <div>
+        <h2>{restaurant.name}</h2>
 
-      {restaurant.menu.length > 0 && (
-        <div>
-          <h3>Menu</h3>
-          <ul>
-            {restaurant.menu.map((dish) => (
-              <li>{dish.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+        {restaurant.menu.length > 0 && (
+          <div>
+            <h3>Menu</h3>
+            <ul>
+              {restaurant.menu.map((dish) => (
+                <li>{dish.name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {restaurant.reviews.length > 0 && (
+          <div>
+            <h3>Reviews</h3>
+            <ul>
+              {restaurant.reviews.map((review) => (
+                <li>{review.text}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    ))}
   </div>
 );
 
