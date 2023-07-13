@@ -3,11 +3,11 @@ import { Restaurant } from "../../components/Restaurant/Restaurant";
 import React from "react";
 
 export const RestaurantPage = () => {
+  const restaurant = restaurants[0];
   return (
     <div>
-      {restaurants?.map((restaurant) => (
-        <Restaurant key={restaurant.id} restaurant={restaurant} />
-      ))}
+      {/* Tabs */}
+      <Restaurant restaurant={restaurant} />
     </div>
   );
 };
