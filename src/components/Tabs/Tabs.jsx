@@ -1,16 +1,15 @@
-
 import { Tab } from "../Tab/Tab";
 
 
-export const Tabs = ({ restaurants, activeIndex, tabClick }) => {
+export const Tabs = ({ restaurants, onTabClick, activeIndex }) => {
     return (
         <div>
-            {restaurants.map(({ id, name }, index) => (
+            {restaurants.map((restaurant, index) => (
                 <Tab
-                    keu={id}
-                    title={name}
-                    Click={() => tabClick(index)}
-                    Active={activeIndex === index}
+                    key={restaurant.id}
+                    title={restaurant.name}
+                    onClick={() => onTabClick(index)}
+                    isActive={activeIndex === index}
                 />
             ))}
         </div>

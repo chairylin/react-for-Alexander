@@ -1,5 +1,5 @@
 import React from 'react';
-import { RestaurantPages } from './components/Pagers/RestaurantPages';
+import { RestaurantPages } from './pages/RestaurentPage/RestaurantPages';
 
 
 export const Render = () => {
