@@ -1,14 +1,7 @@
 import React from 'react';
-import { Restourant } from './components/Restourant/Restourant';
-import { restaurants } from './constants/fixtures';
+import { RestaurantPages } from './components/Pagers/RestaurantPages';
 
 
 export const Render = () => {
-    return (
-        <div>
-            {restaurants?.map((restaurant) => (
-                <Restourant restaurant={restaurant} />
-            ))}
-        </div>
-    );
+    return <RestaurantPages />;
 };
