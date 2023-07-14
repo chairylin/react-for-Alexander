@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../Button/Button";
 import { useCount } from "../../hooks/useCount";
 import { Ingredient } from "../Ingredient/Ingredient";
@@ -7,6 +7,11 @@ import { Ingredient } from "../Ingredient/Ingredient";
 
 export const Dish = ({ dish }) => {
   const { count, decrement, increment } = useCount();
+
+  useEffect(() => {
+    console.log("Hello!");
+  }, [decrement]);
+
   return (
     <div>
       <span>{dish.name}</span>
@@ -19,11 +24,13 @@ export const Dish = ({ dish }) => {
           <span>+</span>
         </Button>
       </div>
-      {count > 0 && <div>
-        {dish.ingredients.map((ingredient) => (
-          <Ingredient key={ingredient} ingredient={ingredient} />
-        ))}
-      </div>}
+      {count > 0 && (
+        <div>
+          {dish.ingredients.map((ingredient) => (
+            <Ingredient key={ingredient} ingredient={ingredient} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
