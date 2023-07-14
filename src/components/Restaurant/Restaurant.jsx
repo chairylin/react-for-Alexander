@@ -6,7 +6,7 @@ export const Restaurant = ({ restaurant }) => {
   return (
     <div>
       <h2>{restaurant.name}</h2>
-
+      {/* Rating */}
       <Menu menu={restaurant.menu} />
 
       <Reviews reviews={restaurant.reviews} />

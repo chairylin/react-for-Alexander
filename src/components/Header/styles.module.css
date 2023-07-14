@@ -1,0 +1,15 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 100%;
+    background-color: black;
+}
+
+.logo {
+    height: 48px;
+    width: 300px;
+    background-size: contain;
+    background: url('./img/logo.svg') no-repeat center;
+}

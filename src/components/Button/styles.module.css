@@ -1,0 +1,33 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.s {
+    padding: 2px 4px;
+    font-size: 14px;
+}
+
+.m {
+    padding: 4px 8px;
+    font-size: 16px;
+}
+
+.borderRadiusSizeS {
+    border-radius: 4px;
+}
+
+.borderRadiusSizeM {
+    border-radius: 8px;
+}
+
+.base {
+    background-color: white;
+    border: 1px solid grey;
+}
+
+.primary {
+    background-color: rgba(91, 91, 238, 0.72);
+    border: 1px solid rgba(33, 33, 87, 0.72);
+}

@@ -1,24 +1,25 @@
 import { Button } from "../Button/Button";
-import React, { useEffect } from "react";
+import React from "react";
 import { Ingredient } from "../Ingredient/Ingredient";
 import { useCount } from "../../hooks/useCount";
+
+import styles from "./styles.module.css";
+import { Size } from "../../constants/ui";
 
 export const Dish = ({ dish }) => {
   const { count, decrement, increment } = useCount();
 
-  useEffect(() => {
-    console.log("Hello!");
-  }, [decrement]);
+  console.log(styles);
 
   return (
-    <div>
+    <div className={styles.root}>
       <span>{dish.name}</span>
       <div>
-        <Button onClick={decrement}>
+        <Button onClick={decrement} size={Size.s} borderRadiusSize={Size.s}>
           <span>-</span>
         </Button>
         {count}
-        <Button onClick={increment}>
+        <Button onClick={increment} size={Size.s} borderRadiusSize={Size.s}>
           <span>+</span>
         </Button>
       </div>
