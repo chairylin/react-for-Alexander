@@ -5,6 +5,11 @@ import { Ingredient } from "../Ingredient/Ingredient";
 
 
 
+import React, { useEffect } from "react";
+import { Ingredient } from "../Ingredient/Ingredient";
+import { useCount } from "../../hooks/useCount";
+
+
 export const Dish = ({ dish }) => {
   const { count, decrement, increment } = useCount();
 
