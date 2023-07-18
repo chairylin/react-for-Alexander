@@ -1,13 +1,19 @@
 import { Menu } from "../Menu/Menu";
-import React from "react";
+import React, { useMemo } from "react";
 import { Reviews } from "../Reviews/Reviews";
 import { Rating } from "../Rating/Rating";
+import { NewReviewForm } from "../NewReviewForm/NewReviewForm";
 
 export const Restaurant = ({ restaurant }) => {
-  const rating = Math.floor(
-    restaurant.reviews.reduce((sum, review) => sum + review.rating, 0) /
-      restaurant.reviews.length
+  const rating = useMemo(
+    () =>
+      Math.floor(
+        restaurant.reviews.reduce((sum, review) => sum + review.rating, 0) /
+          restaurant.reviews.length
+      ),
+    [restaurant.reviews]
   );
+
   return (
     <div>
       <h2>{restaurant.name}</h2>
@@ -15,6 +21,7 @@ export const Restaurant = ({ restaurant }) => {
       <Menu menu={restaurant.menu} />
 
       <Reviews reviews={restaurant.reviews} />
+      <NewReviewForm />
     </div>
   );
 };
