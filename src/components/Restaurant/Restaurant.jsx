@@ -1,6 +1,6 @@
 import { Menu } from "../Menu/Menu";
-import React from "react";
 import { Reviews } from "../Reviews/Reviews";
+import { Rating } from "../Rating/Rating";
 
 export const Restaurant = ({ restaurant }) => {
   const rating = Math.floor(
