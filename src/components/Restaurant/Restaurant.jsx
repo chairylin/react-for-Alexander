@@ -1,6 +1,7 @@
 import { Menu } from "../Menu/Menu";
 import { Reviews } from "../Reviews/Reviews";
 import { Rating } from "../Rating/Rating";
+import { NewReviewForm } from "../NewReviewFrom/NewReviewForm";
 
 export const Restaurant = ({ restaurant }) => {
   const rating = Math.floor(
@@ -14,6 +15,7 @@ export const Restaurant = ({ restaurant }) => {
 
       <Menu menu={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
+      <NewReviewForm />
     </div>
   );
 };

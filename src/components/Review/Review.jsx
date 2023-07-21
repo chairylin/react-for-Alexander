@@ -1,13 +1,14 @@
+import styles from './styles.module.css';
 import { Rating } from "../Rating/Rating";
-import "./styles.css";
 
 
 
-export const Review = ({ review, restaurant }) => {
+
+export const Review = ({ review }) => {
 
 
   return (
-    <div className="root">
+    <div className={styles.root}>
       <span>{review.text}</span>
       <Rating value={review.rating} />
     </div>

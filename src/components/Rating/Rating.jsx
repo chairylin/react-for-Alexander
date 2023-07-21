@@ -6,19 +6,20 @@ import styles from "./styles.module.css"
 import { Size } from './../../constants/ui';
 import classnames from 'classnames';
 
-export const Rating = ({ value, size = Size.m, className }) => {
-
+export const Rating = ({ value, size = Size.m, className, onChange, maxRating = Max_Rating, }) => {
     return (
 
         <div className={className}>
-            {new Array(Max_Rating).fill(null).map((_, index) => (
-                <img
-                    src={index >= value ? Star : GoldStar}
-                    key={index}
-                    className={classnames(styles.star, styles[size])}
-                    loading='lazy'
-                />
-            ))}
+            {maxRating > 0 &&
+                new Array(maxRating).fill(null).map((_, index) => (
+                    <img
+                        src={index >= value ? Star : GoldStar}
+                        key={index}
+                        className={classnames(styles.star, styles[size])}
+                        loading='lazy'
+                        onClick={() => onChange?.(index + 1)}
+                    />
+                ))}
         </div>
     );
 };
