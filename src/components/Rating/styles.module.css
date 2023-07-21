@@ -1,3 +1,4 @@
+
 .root {
     display: flex;
     text-decoration: none;
@@ -6,6 +7,11 @@
 .s {
     width: 16px;
     height: 16px;
+
+.l {
+    width: 48px;
+    height: 48px;
+
 }
 
 .m {
@@ -13,11 +19,3 @@
     height: 32px;
 }
 
-.l {
-    width: 48px;
-    height: 48px;
-}
-
-.star:not(:last-child) {
-    margin-right: 5px;
-}

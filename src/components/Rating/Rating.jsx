@@ -1,3 +1,4 @@
+
 import { Max_Rating } from "./constant";
 import Star from "./img/star.svg";
 import GoldStar from "./img/star-gold.svg"
@@ -24,3 +25,4 @@ export const Rating = ({ value, size = Size.m, className, onChange, maxRating = 
         </div>
     );
 };
+
