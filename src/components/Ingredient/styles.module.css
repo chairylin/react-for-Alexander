@@ -1,19 +1,23 @@
 .root {
-    text-decoration: none;
     display: flex;
-    flex-direction: column;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    padding: auto;
+    padding: 15px 30px;
 }
 
-.user {
-    font-weight: 500;
+.title {
+    font-weight: 100;
 }
 
-.rating {
-    padding: 10px 5px;
-    margin-right: auto;
+.mainInfo {
+    display: flex;
+    align-self: center;
+}
+
+.controls {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
 }
 
 .ingredients {

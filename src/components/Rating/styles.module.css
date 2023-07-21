@@ -1,3 +1,8 @@
+.root {
+    display: flex;
+    text-decoration: none;
+}
+
 .s {
     width: 16px;
     height: 16px;

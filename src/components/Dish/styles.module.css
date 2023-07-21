@@ -3,14 +3,19 @@
     flex-direction: column;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    padding: auto;
+    padding: 15px 30px;
 }
 
-.user {
-    font-weight: 500;
+.title {
+    font-weight: bold;
 }
 
-.rating {
+.mainInfo {
+    display: flex;
+}
+
+.controls {
+    display: flex;
     margin-left: auto;
 }
 

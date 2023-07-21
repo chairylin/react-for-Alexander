@@ -9,7 +9,7 @@ import classnames from 'classnames';
 export const Rating = ({ value, size = Size.m, className, onChange, maxRating = Max_Rating, }) => {
     return (
 
-        <div className={className}>
+        <div className={(className)}>
             {maxRating > 0 &&
                 new Array(maxRating).fill(null).map((_, index) => (
                     <img
@@ -17,7 +17,8 @@ export const Rating = ({ value, size = Size.m, className, onChange, maxRating = 
                         key={index}
                         className={classnames(styles.star, styles[size])}
                         loading='lazy'
-                        onClick={() => onChange?.(index + 1)}
+                        onClick={onChange ? () => onChange?.(index + 1) : undefined}
+                        alt="star"
                     />
                 ))}
         </div>
