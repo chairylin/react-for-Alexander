@@ -1,0 +1,8 @@
+.root {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu, .review, .reviewForm {
+    margin-top: 30px;
+}

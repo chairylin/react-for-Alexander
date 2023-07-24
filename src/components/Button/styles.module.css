@@ -5,13 +5,16 @@
 }
 
 .s {
-    padding: 2px 4px;
-    font-size: 14px;
+    min-width: 26px;
+    min-height: 26px;
+    font-size: 16px;
 }
 
 .m {
+    min-width: 32px;
+    min-height: 32px;
     padding: 4px 8px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .borderRadiusSizeS {

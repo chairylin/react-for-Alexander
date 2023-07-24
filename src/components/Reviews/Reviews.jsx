@@ -1,18 +1,18 @@
 import React from "react";
 import { Review } from "../Review/Review";
+import classnames from "classnames";
+import styles from "./styles.module.css";
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({ reviews, className }) => {
   return (
-    <div>
-      <h3>Reviews</h3>
+    <div className={classnames(styles.root, className)}>
+      <h2 className={styles.title}>Reviews</h2>
       {reviews.length > 0 ? (
-        <ul>
+        <div>
           {reviews.map((review) => (
-            <li key={review.id}>
-              <Review review={review} />
-            </li>
+            <Review key={review.id} review={review} className={styles.review} />
           ))}
-        </ul>
+        </div>
       ) : (
         <div>Empty</div>
       )}

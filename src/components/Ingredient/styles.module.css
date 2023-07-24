@@ -1,0 +1,9 @@
+.root {
+    display: flex;
+}
+
+.controls {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}

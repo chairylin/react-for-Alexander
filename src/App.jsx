@@ -1,13 +1,12 @@
 import React from "react";
 import { RestaurantPage } from "./pages/RestaurantPage/RestaurantPage";
 import { restaurants } from "./constants/fixtures";
-import { Header } from "./components/Header/Header";
+import { Layout } from "./components/Layout/Layout";
 
 export const App = () => {
   return (
-    <div>
-      <Header />
+    <Layout>
       <RestaurantPage restaurants={restaurants} />
-    </div>
+    </Layout>
   );
 };

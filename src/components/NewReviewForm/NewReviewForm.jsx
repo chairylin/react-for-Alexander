@@ -1,7 +1,9 @@
 import styles from "./styles.module.css";
+import classnames from "classnames";
 import { useReducer } from "react";
 import { Button } from "../Button/Button";
-import classnames from "classnames";
+import { Size } from "../../constants/ui";
+import { Rating } from "../Rating/Rating";
 
 const initialState = {
   name: "",
@@ -56,7 +58,7 @@ export const NewReviewForm = ({ className }) => {
   return (
     <div className={classnames(styles.root, className)}>
       <div className={styles.formControl}>
-        <label>Name</label>
+        <label className={styles.label}>Name</label>
         <input
           type="text"
           value={formValue.name}
@@ -66,7 +68,7 @@ export const NewReviewForm = ({ className }) => {
         />
       </div>
       <div className={styles.formControl}>
-        <label>Text</label>
+        <label className={styles.label}>Text</label>
         <input
           type="text"
           value={formValue.text}
@@ -76,14 +78,15 @@ export const NewReviewForm = ({ className }) => {
         />
       </div>
       <div className={styles.formControl}>
-        <label>Rating</label>
-        <input
-          type="number"
-          max="5"
-          min="1"
+        <label className={styles.label}>Rating</label>
+        <Rating
+          size={Size.m}
           value={formValue.rating}
-          onChange={(event) =>
-            dispatch({ type: Actions.setRating, payload: event.target.value })
+          onChange={(value) =>
+            dispatch({
+              type: Actions.setRating,
+              payload: value,
+            })
           }
         />
       </div>

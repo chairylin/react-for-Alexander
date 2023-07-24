@@ -1,18 +1,19 @@
 import React from "react";
 import { Dish } from "../Dish/Dish";
 
-export const Menu = ({ menu }) => {
+import styles from "./styles.module.css";
+import classnames from "classnames";
+
+export const Menu = ({ menu, className }) => {
   return (
-    <div>
-      <h3>Menu</h3>
+    <div className={classnames(styles.root, className)}>
+      <h2 className={styles.title}>Menu</h2>
       {menu.length > 0 ? (
-        <ul>
+        <div>
           {menu.map((dish) => (
-            <li key={dish.id}>
-              <Dish dish={dish} />
-            </li>
+            <Dish key={dish.id} dish={dish} className={styles.dish} />
           ))}
-        </ul>
+        </div>
       ) : (
         <div>Empty</div>
       )}
