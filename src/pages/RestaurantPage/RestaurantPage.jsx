@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 
 export const RestaurantPage = ({ restaurants }) => {
   const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
+  console.log("render");
 
   return (
     <div className={styles.root}>

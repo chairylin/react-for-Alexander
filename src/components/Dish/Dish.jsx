@@ -1,16 +1,27 @@
 import { Button } from "../Button/Button";
 import React from "react";
 import { Ingredient } from "../Ingredient/Ingredient";
-import { useCount } from "../../hooks/useCount";
 
 import styles from "./styles.module.css";
 import classnames from "classnames";
 import { Size } from "../../constants/ui";
+import { useSelector } from "../../CustomeStore/hooks/useSelector";
+import { useDispatch } from "../../CustomeStore/hooks/useDispatch";
+import { Actions } from "../../store";
+import { useCount } from "../../hooks/useCount";
 
 export const Dish = ({ dish, className }) => {
-  const { count, decrement, increment } = useCount();
+  // const { count, decrement, increment } = useCount();
 
-  console.log(styles);
+  const count = useSelector((state) => {
+    console.log("state: ", state);
+    return state[dish.id] || 0;
+  });
+  const dispatch = useDispatch();
+
+  const decrement = () =>
+    dispatch({ type: Actions.RemoveDish, payload: dish.id });
+  const increment = () => dispatch({ type: Actions.AddDish, payload: dish.id });
 
   return (
     <div className={classnames(styles.root, className)}>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styles from "./styles.module.css";
 import classnames from "classnames";
 import { ViewVariant } from "./constants";
 import { Size } from "../../constants/ui";
+import { ThemeContext } from "../ThemeContextProvider/ThemeContext";
 
 const borderRadiusStyles = {
   s: styles.borderRadiusSizeS,
@@ -19,6 +20,10 @@ export const Button = ({
   viewVariant = ViewVariant.base,
   className,
 }) => {
+  const theme = useContext(ThemeContext);
+
+  console.log("theme: ", theme);
+
   return (
     <button
       className={classnames(
