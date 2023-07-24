@@ -5,23 +5,18 @@ import { Ingredient } from "../Ingredient/Ingredient";
 import styles from "./styles.module.css";
 import classnames from "classnames";
 import { Size } from "../../constants/ui";
-import { useSelector } from "../../CustomeStore/hooks/useSelector";
-import { useDispatch } from "../../CustomeStore/hooks/useDispatch";
-import { Actions } from "../../store";
-import { useCount } from "../../hooks/useCount";
+import { useSelector, useDispatch } from "react-redux";
+import { addDish, removeDish } from "../../store/cart/actions";
+import { selectDishCountById } from "../../store/cart/selectors";
 
 export const Dish = ({ dish, className }) => {
-  // const { count, decrement, increment } = useCount();
-
-  const count = useSelector((state) => {
-    console.log("state: ", state);
-    return state[dish.id] || 0;
-  });
+  const count = useSelector((state) =>
+    selectDishCountById(state, { dishId: dish.id })
+  );
   const dispatch = useDispatch();
 
-  const decrement = () =>
-    dispatch({ type: Actions.RemoveDish, payload: dish.id });
-  const increment = () => dispatch({ type: Actions.AddDish, payload: dish.id });
+  const decrement = () => dispatch(removeDish(dish.id));
+  const increment = () => dispatch(addDish(dish.id));
 
   return (
     <div className={classnames(styles.root, className)}>
