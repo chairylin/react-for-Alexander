@@ -29,9 +29,9 @@ export const Restaurant = ({ restaurantId }) => {
     <div>
       <h1>{restaurant.name}</h1>
       {/*<Rating value={rating} />*/}
-      {/*<Menu menu={restaurant.menu} className={styles.menu} />*/}
+      <Menu restaurantId={restaurantId} className={styles.menu} />
 
-      {/*<Reviews reviews={restaurant.reviews} className={styles.review} />*/}
+      <Reviews restaurantId={restaurantId} className={styles.review} />
 
       <NewReviewForm className={styles.reviewForm} />
     </div>

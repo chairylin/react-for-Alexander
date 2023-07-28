@@ -3,8 +3,13 @@ import { Dish } from "../Dish/Dish";
 
 import styles from "./styles.module.css";
 import classnames from "classnames";
+import { useSelector } from "react-redux";
+import { selectRestaurantDishIdsById } from "../../store/restaurant/selectors";
 
-export const Menu = ({ menu, className }) => {
+export const Menu = ({ restaurantId, className }) => {
+  const menu = useSelector((state) =>
+    selectRestaurantDishIdsById(state, { restaurantId })
+  );
   return (
     <div className={classnames(styles.root, className)}>
       <h2 className={styles.title}>Menu</h2>

@@ -8,15 +8,22 @@ import { Size } from "../../constants/ui";
 import { useSelector, useDispatch } from "react-redux";
 import { addDish, removeDish } from "../../store/cart/actions";
 import { selectDishCountById } from "../../store/cart/selectors";
+import { selectDishById } from "../../store/dish/selectors";
 
-export const Dish = ({ dish, className }) => {
+export const Dish = ({ dishId, className }) => {
+
   const count = useSelector((state) =>
     selectDishCountById(state, { dishId: dish.id })
   );
+  const dish = useSelector((state) => selectDishById(state, { dishId }));
   const dispatch = useDispatch();
 
   const decrement = () => dispatch(removeDish(dish.id));
   const increment = () => dispatch(addDish(dish.id));
+
+  if (!dish) {
+    return null;
+  }
 
   return (
     <div className={classnames(styles.root, className)}>
