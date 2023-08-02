@@ -12,9 +12,7 @@ import { selectDishById } from "../../store/dish/selectors";
 
 export const Dish = ({ dishId, className }) => {
 
-  const count = useSelector((state) =>
-    selectDishCountById(state, { dishId: dish.id })
-  );
+  const count = useSelector((state) => selectDishCountById(state, { dishId }));
   const dish = useSelector((state) => selectDishById(state, { dishId }));
   const dispatch = useDispatch();
 

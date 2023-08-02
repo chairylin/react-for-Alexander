@@ -9,7 +9,7 @@ const initialState = {
     ids: normalizedReviews.map(({ id }) => id),
 };
 
-export const reviewsReducer = (state = initialState, action) => {
+export const reviewReducer = (state = initialState, action) => {
     switch (action?.type) {
         default:
             return state;

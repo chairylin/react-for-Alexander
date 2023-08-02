@@ -2,6 +2,7 @@ import React from "react";
 import { Dish } from "../Dish/Dish";
 
 import styles from "./styles.module.css";
+
 import classnames from "classnames";
 import { useSelector } from "react-redux";
 import { selectRestaurantDishIdsById } from "../../store/restaurant/selectors";
@@ -16,7 +17,7 @@ export const Menu = ({ restaurantId, className }) => {
       {menu.length > 0 ? (
         <div>
           {menu.map((dish) => (
-            <Dish key={dish.id} dish={dish} className={styles.dish} />
+            <Dish key={dish} dishId={dish} className={styles.dish} />
           ))}
         </div>
       ) : (

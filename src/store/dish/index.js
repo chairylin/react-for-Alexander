@@ -1,7 +1,7 @@
 import { normalizedProducts } from "../../constants/normalized-fixtures";
 
 
-const initilazeState = {
+const initialState = {
     entities: normalizedProducts.reduce((acc, dish) => {
         acc[dish.id] = dish;
         return acc;
@@ -9,9 +9,9 @@ const initilazeState = {
     ids: normalizedProducts.map(({ id }) => id),
 };
 
-export const dishReducer = (state = initilazeState, action) => {
+export const dishReducer = (state = initialState, action) => {
     switch (action?.type) {
         default:
-            return false;
+            return state;
     }
-}
+};
