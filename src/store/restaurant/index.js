@@ -1,16 +1,26 @@
-import { normalizedRestaurants } from "../../constants/normalized-fixtures";
+import { LoadingStatuses } from "../constants/statuses";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  entities: normalizedRestaurants.reduce((acc, restaurant) => {
-    acc[restaurant.id] = restaurant;
-    return acc;
-  }, {}),
-  ids: normalizedRestaurants.map(({ id }) => id),
+  entities: {},
+  ids: [],
+  status: LoadingStatuses.idle,
 };
 
-export const restaurantReducer = (state = initialState, action) => {
-  switch (action?.type) {
-    default:
-      return state;
-  }
-};
+export const restaurantSlice = createSlice({
+  name: "restaurant",
+  initialState,
+  reducers: {
+    startLoading: (state) => {
+      state.status = LoadingStatuses.inProgress;
+    },
+    failLoading: (state) => {
+      state.status = LoadingStatuses.failed;
+    },
+    finishLoading: (state, { payload: { entities, ids } }) => {
+      state.status = LoadingStatuses.success;
+      state.entities = entities;
+      state.ids = ids;
+    },
+  },
+});

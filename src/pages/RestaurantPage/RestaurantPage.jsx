@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Restaurant } from "../../components/Restaurant/Restaurant";
 import { Tabs } from "../../components/Tabs/Tabs";
 
 import styles from "./styles.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsRestaurantLoading } from "../../store/restaurant/selectors";
+import { loadRestaurantsIfNotExist } from "../../store/restaurant/thunks/loadRestaurantsIfNotExist";
 
 export const RestaurantPage = () => {
   const [activeRestaurantId, setActiveRestaurantId] = useState();
+  const isLoading = useSelector(selectIsRestaurantLoading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurantsIfNotExist);
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.root}>
