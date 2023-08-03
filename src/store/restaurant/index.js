@@ -1,26 +1,49 @@
 import { LoadingStatuses } from "../constants/statuses";
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createEntityAdapter,
+  createSlice,
+} from "@reduxjs/toolkit";
+import { selectRestaurantIds } from "./selectors";
+import { normalize } from "../utils/normalize";
 
-const initialState = {
-  entities: {},
-  ids: [],
-  status: LoadingStatuses.idle,
-};
+export const fetchRestaurants = createAsyncThunk(
+  "restaurant/fetchRestaurants",
+  async (_, thunkAPI) => {
+    const restaurantIds = selectRestaurantIds(thunkAPI.getState());
+
+    if (restaurantIds?.length) {
+      return thunkAPI.rejectWithValue(LoadingStatuses.alreadyLoaded);
+    }
+
+    const response = await fetch("http://localhost:3001/api/restaurants/");
+
+    return await response.json();
+  }
+);
+
+const restaurantEntityAdapter = createEntityAdapter();
 
 export const restaurantSlice = createSlice({
   name: "restaurant",
-  initialState,
-  reducers: {
-    startLoading: (state) => {
-      state.status = LoadingStatuses.inProgress;
-    },
-    failLoading: (state) => {
-      state.status = LoadingStatuses.failed;
-    },
-    finishLoading: (state, { payload: { entities, ids } }) => {
-      state.status = LoadingStatuses.success;
-      state.entities = entities;
-      state.ids = ids;
-    },
-  },
+  initialState: restaurantEntityAdapter.getInitialState({
+    status: LoadingStatuses.idle,
+  }),
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchRestaurants.pending, (state) => {
+        state.status = LoadingStatuses.inProgress;
+      })
+      .addCase(fetchRestaurants.rejected, (state, { payload }) => {
+        if (payload === LoadingStatuses.alreadyLoaded) {
+          state.status = LoadingStatuses.success;
+          return;
+        }
+
+        state.status = LoadingStatuses.failed;
+      })
+      .addCase(fetchRestaurants.fulfilled, (state, { payload }) => {
+        restaurantEntityAdapter.addMany(state, payload);
+        state.status = LoadingStatuses.success;
+      }),
 });

@@ -5,7 +5,7 @@ import { Tabs } from "../../components/Tabs/Tabs";
 import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRestaurantLoading } from "../../store/restaurant/selectors";
-import { loadRestaurantsIfNotExist } from "../../store/restaurant/thunks/loadRestaurantsIfNotExist";
+import { fetchRestaurants } from "../../store/restaurant";
 
 export const RestaurantPage = () => {
   const [activeRestaurantId, setActiveRestaurantId] = useState();
@@ -13,7 +13,7 @@ export const RestaurantPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurantsIfNotExist);
+    dispatch(fetchRestaurants());
   }, []);
 
   if (isLoading) {
