@@ -5,7 +5,6 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { selectRestaurantIds } from "./selectors";
-import { normalize } from "../utils/normalize";
 
 export const fetchRestaurants = createAsyncThunk(
   "restaurant/fetchRestaurants",
