@@ -6,9 +6,9 @@ import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRestaurantLoading } from "../../store/restaurant/selectors";
 import { fetchRestaurants } from "../../store/restaurant";
+import { Outlet } from "react-router-dom";
 
 export const RestaurantPage = () => {
-  const [activeRestaurantId, setActiveRestaurantId] = useState();
   const isLoading = useSelector(selectIsRestaurantLoading);
   const dispatch = useDispatch();
 
@@ -22,14 +22,8 @@ export const RestaurantPage = () => {
 
   return (
     <div className={styles.root}>
-      <Tabs
-        onTabClick={setActiveRestaurantId}
-        activeId={activeRestaurantId}
-        className={styles.tabs}
-      />
-      {activeRestaurantId !== undefined && (
-        <Restaurant restaurantId={activeRestaurantId} />
-      )}
+      <Tabs className={styles.tabs} />
+      <Outlet />
     </div>
   );
 };

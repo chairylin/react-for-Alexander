@@ -1,20 +1,25 @@
-import { Button } from "../Button/Button";
-import { ViewVariant } from "../Button/constants";
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../store/restaurant/selectors";
+import { NavLink } from "react-router-dom";
+import classnames from "classnames";
 
-export const Tab = ({ isActive, onClick, restaurantId, className }) => {
+import styles from "./styles.module.css";
+
+export const Tab = ({ restaurantId, className }) => {
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, { restaurantId })
   );
 
   return (
-    <Button
-      onClick={onClick}
-      className={className}
-      viewVariant={isActive ? ViewVariant.primary : ViewVariant.base}
+    <NavLink
+      to={restaurantId}
+      className={({ isActive }) =>
+        classnames(className, {
+          [styles.active]: isActive,
+        })
+      }
     >
       {restaurant.name}
-    </Button>
+    </NavLink>
   );
 };

@@ -6,8 +6,10 @@ import { NewReviewForm } from "../NewReviewForm/NewReviewForm";
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../store/restaurant/selectors";
+import { useParams } from "react-router-dom";
 
-export const Restaurant = ({ restaurantId }) => {
+export const Restaurant = () => {
+  const { restaurantId } = useParams();
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, { restaurantId })
   );

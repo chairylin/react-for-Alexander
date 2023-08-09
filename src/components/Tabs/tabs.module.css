@@ -1,5 +1,10 @@
 .root {
     display: flex;
+    flex-direction: column;
+}
+
+.searchInput {
+    margin-bottom: 20px;
 }
 
 .tab:not(:last-child) {

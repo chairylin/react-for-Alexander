@@ -3,13 +3,25 @@
     align-items: center;
     justify-content: center;
     height: 48px;
-    width: 100%;
+    width: calc(100% - 60px);
     background-color: black;
+    padding: 0 30px;
 }
 
 .logo {
-    height: 48px;
-    width: 300px;
-    background-size: contain;
-    background: url('./img/logo.svg') no-repeat center;
+    margin-right: auto;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: grey;
+}
+
+.link:not(:last-child) {
+    margin-right: 20px;
 }
