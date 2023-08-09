@@ -25,7 +25,7 @@ export const fetchDishes = createAsyncThunk(
 const dishEntityAdapter = createEntityAdapter();
 
 export const dishSlice = createSlice({
-  name: 'dish',
+  name: "dish",
   initialState: dishEntityAdapter.getInitialState({ status: LoadingStatuses.idle, }),
   extraReducers: (builder) =>
     builder

@@ -5,7 +5,7 @@ const initialState = {};
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducer: {
+  reducers: {
     addDish: (state, { payload }) => {
       state[payload] = (state[payload] || 0) + 1;
     },

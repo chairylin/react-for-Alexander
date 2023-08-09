@@ -9,10 +9,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 
 // root.render(
-//   React.createElement("div", {
-//     className: "divClass",
-//     children: restaurant.menu.map((dish) =>
-//       React.createElement("div", { children: dish.name })
-//     ),
-//   })
+//     React.createElement("div", {
+//         className: "divClass",
+//         children: restaurant.menu.map((dish) =>
+//             React.createElement("div", { children: dish.name })
+//         ),
+//     })
 // );

@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { cartSlice } from "./cart";
 import { restaurantSlice } from "./restaurant";
-import { reviewReducer, reviewSlice } from "./review";
+import { reviewSlice } from "./review";
 import { userSlice } from "./user";
 import { logger } from "./middlewares/logger";
 import { configureStore } from "@reduxjs/toolkit";
