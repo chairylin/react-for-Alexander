@@ -5,7 +5,6 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { selectRestaurantIds } from "./selectors";
-import { normalize } from "../utils/normalize";
 
 export const fetchRestaurants = createAsyncThunk(
   "restaurant/fetchRestaurants",
@@ -13,7 +12,7 @@ export const fetchRestaurants = createAsyncThunk(
     const restaurantIds = selectRestaurantIds(thunkAPI.getState());
 
     if (restaurantIds?.length) {
-      return thunkAPI.rejectWithValue(LoadingStatuses.alreadyLoaded);
+      return thunkAPI.rejectWithValue(LoadingStatuses.earlyAdded);
     }
 
     const response = await fetch("http://localhost:3001/api/restaurants/");
@@ -35,7 +34,7 @@ export const restaurantSlice = createSlice({
         state.status = LoadingStatuses.inProgress;
       })
       .addCase(fetchRestaurants.rejected, (state, { payload }) => {
-        if (payload === LoadingStatuses.alreadyLoaded) {
+        if (payload === LoadingStatuses.earlyAdded) {
           state.status = LoadingStatuses.success;
           return;
         }

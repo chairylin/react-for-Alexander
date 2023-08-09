@@ -1,18 +1,18 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import { cartReducer } from "./cart";
-import { restaurantReducer, restaurantSlice } from "./restaurant";
-import { dishReducer } from "./dish";
-import { reviewReducer } from "./review";
-import { userReducer } from "./user";
+import { combineReducers } from "redux";
+import { cartSlice } from "./cart";
+import { restaurantSlice } from "./restaurant";
+import { dishSlice } from "./dish";
+import { reviewSlice } from "./review";
+import { userSlice } from "./user";
 import { logger } from "./middlewares/logger";
 import { configureStore } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
-  cart: cartReducer,
+  cart: cartSlice.reducer,
   restaurant: restaurantSlice.reducer,
-  dish: dishReducer,
-  review: reviewReducer,
-  user: userReducer,
+  dish: dishSlice.reducer,
+  review: reviewSlice.reducer,
+  user: userSlice.reducer,
 });
 
 export const store = configureStore({
