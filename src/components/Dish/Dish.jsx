@@ -1,5 +1,5 @@
 import { Button } from "../Button/Button";
-import React from "react";
+import React, { useCallback } from "react";
 import { Ingredient } from "../Ingredient/Ingredient";
 
 import styles from "./styles.module.css";
@@ -17,6 +17,10 @@ export const Dish = ({ dishId, className }) => {
 
   const decrement = () => dispatch(cartSlice.actions.removeDish(dish.id));
   const increment = () => dispatch(cartSlice.actions.addDish(dish.id));
+
+  // const selector = useCallback(selectRestaurantRating(), []);
+  //
+  // const rating = useSelector((state) => selector(state));
 
   if (!dish) {
     return null;
@@ -50,3 +54,5 @@ export const Dish = ({ dishId, className }) => {
     </div>
   );
 };
+
+export const DishWithMemo = React.memo(Dish);

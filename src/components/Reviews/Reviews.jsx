@@ -16,10 +16,6 @@ export const Reviews = ({ restaurantId, className }) => {
   const isLoading = useSelector(selectIsReviewLoading);
 
   useEffect(() => {
-    dispatch(fetchReviews(restaurantId));
-  }, [restaurantId]);
-
-  useEffect(() => {
     dispatch(fetchUsers());
   }, []);
 
