@@ -9,7 +9,7 @@ import {
   selectRestaurantById,
   selectRestaurantRating,
 } from "../../store/restaurant/selectors";
-import { useParams } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import { fetchReviews } from "../../store/review";
 
 const CustomInput = () => {
@@ -46,14 +46,29 @@ export const Restaurant = () => {
       {/*<CustomInput />*/}
       <h1>{restaurant.name}</h1>
       <Rating value={rating} />
-      <MenuWithAuthorization
-        restaurantId={restaurantId}
-        className={styles.menu}
-      />
 
-      <Reviews restaurantId={restaurantId} className={styles.review} />
+      <ul>
+        <li>
+          <NavLink
+            className={({ isActive }) => isActive && styles.activeTab}
+            to="menu"
+          >
+            Menu
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => isActive && styles.activeTab}
+            to="reviews"
+          >
+            Reviews
+          </NavLink>
+        </li>
+      </ul>
 
-      <NewReviewForm className={styles.reviewForm} />
+      <div className={styles.mainContent}>
+        <Outlet />
+      </div>
     </div>
   );
 };

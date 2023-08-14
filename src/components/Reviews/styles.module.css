@@ -10,3 +10,7 @@
 .review:not(:last-child) {
     margin-bottom: 10px;
 }
+
+.reviewForm {
+    margin-top: 30px;
+}

@@ -44,7 +44,7 @@ export const Tabs = ({ className }) => {
     <div className={classnames(styles.root, className)}>
       <InputWithDebounce
         initialValue={search.get("restaurantName") || ""}
-        onChange={(value) => setSearch({ restaurantName: value })}
+        onChange={(value) => setSearch(value ? { restaurantName: value } : {})}
         className={styles.searchInput}
       />
       <div>

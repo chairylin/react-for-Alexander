@@ -7,9 +7,12 @@ import { selectRestaurantReviewIdsById } from "../../store/restaurant/selectors"
 import { selectIsReviewLoading } from "../../store/review/selectors";
 import { fetchReviews } from "../../store/review";
 import { fetchUsers } from "../../store/user";
+import { NewReviewForm } from "../NewReviewForm/NewReviewForm";
+import { useParams } from "react-router-dom";
 
-export const Reviews = ({ restaurantId, className }) => {
+export const Reviews = () => {
   const dispatch = useDispatch();
+  const { restaurantId } = useParams();
   const reviews = useSelector((state) =>
     selectRestaurantReviewIdsById(state, { restaurantId })
   );
@@ -28,7 +31,7 @@ export const Reviews = ({ restaurantId, className }) => {
   }
 
   return (
-    <div className={classnames(styles.root, className)}>
+    <div className={classnames(styles.root)}>
       <h2 className={styles.title}>Reviews</h2>
       {reviews.length > 0 ? (
         <div>
@@ -43,6 +46,7 @@ export const Reviews = ({ restaurantId, className }) => {
       ) : (
         <div>Empty</div>
       )}
+      <NewReviewForm className={styles.reviewForm} />
     </div>
   );
 };

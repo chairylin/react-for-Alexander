@@ -20,10 +20,6 @@ export const Button = ({
   viewVariant = ViewVariant.base,
   className,
 }) => {
-  const theme = useContext(ThemeContext);
-
-  console.log("theme: ", theme);
-
   return (
     <button
       className={classnames(
